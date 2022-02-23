@@ -1,15 +1,15 @@
 version: '3.3'
 services:
-  # db:
-  #   image: mysql:5.7
-  #   restart: always
-  #   environment:
-  #     MYSQL_DATABASE: 'mysql-db'
-  #     MYSQL_USER: 'mysql-user'
-  #     MYSQL_PASSWORD: 'mysql-password'
-  #     MYSQL_ROOT_PASSWORD: 'root'
-  #   ports:
-  #     - '3306:3306'
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'mysql-db'
+      MYSQL_USER: 'mysql-user'
+      MYSQL_PASSWORD: 'mysql-password'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
     # volumes:
     #   - my_project_mysql_data:/var/lib/mysql
   php-apache:
@@ -19,8 +19,8 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - ./server:/var/www/my-project
+      - ./server:/var/www/html
       # - ./.docker/apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
-    # depends_on:
-    #   - db
-    # restart: on-failure
+    depends_on:
+      - db
+    restart: on-failure
