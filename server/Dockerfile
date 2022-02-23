@@ -16,4 +16,4 @@ RUN apt update \
             pdo \
             pdo_mysql
 
-WORKDIR /var/www/smartclick
+WORKDIR /var/www/my-project
