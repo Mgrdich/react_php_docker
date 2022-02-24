@@ -11,3 +11,6 @@
 
 
 ### To Start the Client Code
+* Go to client folder `cd client`
+* Run `docker build -t react-client .`
+* Run `docker run -P react-client`
