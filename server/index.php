@@ -1,5 +1,8 @@
 <?php
-echo "Hello";
+
+require('vendor/autoload.php');
+
+echo "Hello"."<br>";
 
 include "db-connection.php";
 
