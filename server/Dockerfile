@@ -11,9 +11,11 @@ RUN apt update \
             zip \
             zlib1g-dev \
         && docker-php-ext-install \
+            sockets \
             intl \
             opcache \
             pdo \
             pdo_mysql
 
-WORKDIR /var/www/my-project
+WORKDIR /var/www/html
+CMD ["composer", "install"]
