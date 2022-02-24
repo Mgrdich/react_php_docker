@@ -4,3 +4,10 @@
 * PHP project with its container
 * MySql and RabbitMq containers
 * All containers are linked through docker-compose
+
+
+### To Start the Server code
+* Run `docker-compose up` in order to run docker compose and link mysql RabbitMq and php-apache containers
+
+
+### To Start the Client Code
