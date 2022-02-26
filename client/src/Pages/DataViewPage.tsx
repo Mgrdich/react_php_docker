@@ -1,7 +1,7 @@
 const DataViewPage = () => {
     return (
         <>
-
+            <div>Data View Page</div>
         </>
     );
 };

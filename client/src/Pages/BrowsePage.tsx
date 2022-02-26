@@ -1,7 +1,7 @@
 const BrowsePage = () => {
     return (
         <>
-
+            <div>Browser Page</div>
         </>
     );
 };
