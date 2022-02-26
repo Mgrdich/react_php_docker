@@ -14,6 +14,7 @@ export default class FileService {
         let config: AxiosRequestConfig = {
             headers: {
                 "Content-Type": "multipart/form-data",
+                "Accept": 'application/json'
             }
         };
 

@@ -1,9 +1,18 @@
 import React, {FC} from 'react';
 
-const Thead:FC = () => {
+interface IThead {
+    data: string[];
+}
+
+
+const Thead: FC<IThead> = ({data}) => {
     return (
         <thead>
-            <th>ss</th>
+        <tr>
+            {
+                data.map(item => <th key={item}>{item}</th>)
+            }
+        </tr>
         </thead>
     );
 };

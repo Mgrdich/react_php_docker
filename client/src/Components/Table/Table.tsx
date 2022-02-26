@@ -2,11 +2,16 @@ import Tbody from "./Tbody";
 import Thead from "./Thead";
 import {FC} from "react";
 
-const Table:FC = () => {
+interface ITable {
+    thead: string[];
+    tbody: Array<any>;
+}
+
+const Table: FC<ITable> = ({tbody, thead}) => {
     return (
         <>
-            <Thead/>
-            <Tbody/>
+            <Thead data={thead}/>
+            <Tbody data={tbody}/>
         </>
     );
 };
