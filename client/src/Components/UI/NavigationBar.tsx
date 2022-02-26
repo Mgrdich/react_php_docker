@@ -8,7 +8,7 @@ const StyledUl = styled.ul`
   font-size: 12px;
   text-transform: uppercase;
   margin: 0;
-`
+`;
 
 const StyledLi = styled.li`
   display: inline-block;
@@ -16,14 +16,14 @@ const StyledLi = styled.li`
   a {
     display: block;
     padding: 10px;
-    color: white;
+    color: var(--text-color);
     font-size: 16px;
     text-decoration: none;
     &:hover {
-      color: aqua;
+      color: var(--hover-text-color);
     }
   }
-`
+`;
 
 interface INavigationBar {
     routes: Array<{
