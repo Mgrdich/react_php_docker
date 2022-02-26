@@ -33,10 +33,10 @@ const StyledButton = styled.button<IStyledButton>`
 
 const StyledResult = styled.div`
   text-align: center;
-  margin: 0 auto;
+  margin: 50px auto;
     * {
      font-size: 50px;
-      color: var(--text-color);
+      color: var(--text-secondary-color);
     }
 `;
 
@@ -83,7 +83,7 @@ const BrowsePage: FC = () => {
                 <div>Error: {error}</div>
             </FlexContainer> : null}
             <StyledResult>
-                {<Loader/>}
+                {isLoading && <Loader/>}
                 {isError && <span>Something went Wrong</span>}
             </StyledResult>
         </>

@@ -6,5 +6,6 @@ body {
     font-family: 'Roboto Mono', monospace;
 
     --text-color: white;
+    --text-secondary-color: black;
     --hover-text-color: aqua;
 }
