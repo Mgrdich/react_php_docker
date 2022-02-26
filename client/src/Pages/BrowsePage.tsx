@@ -1,9 +1,10 @@
 import {FC} from "react";
+import {StyledHeader} from "../styled/general";
 
 const BrowsePage:FC = () => {
     return (
         <>
-            <div>Browser Page</div>
+            <StyledHeader>Browser Page</StyledHeader>
         </>
     );
 };

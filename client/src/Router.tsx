@@ -9,6 +9,12 @@ import DataViewParsedPage from "./Pages/DataViewParsedPage";
 import MainPage from "./Pages/MainPage";
 import NavigationBar from "./Components/UI/NavigationBar";
 import {T_NavigationPages} from "./types/types";
+import styled from "styled-components";
+
+
+const PageContainer = styled.div`
+  padding: 10px;
+`;
 
 enum App_Routes {
     mainPage = '/',
@@ -34,19 +40,21 @@ const NavigationPages: T_NavigationPages = [
         text: 'Data Page 2',
         url: App_Routes.dataPage2
     },
-]
+];
 
 const AppRouter = () => {
     return (
         <>
             <BrowserRouter>
                 <NavigationBar routes={NavigationPages}/>
-                <Routes>
-                    <Route path={App_Routes.mainPage} element={<MainPage/>}/>
-                    <Route path={App_Routes.browsePage} element={<BrowsePage/>}/>
-                    <Route path={App_Routes.dataPage1} element={<DataViewPage/>}/>
-                    <Route path={App_Routes.dataPage2} element={<DataViewParsedPage/>}/>
-                </Routes>
+                <PageContainer>
+                    <Routes>
+                        <Route path={App_Routes.mainPage} element={<MainPage/>}/>
+                        <Route path={App_Routes.browsePage} element={<BrowsePage/>}/>
+                        <Route path={App_Routes.dataPage1} element={<DataViewPage/>}/>
+                        <Route path={App_Routes.dataPage2} element={<DataViewParsedPage/>}/>
+                    </Routes>
+                </PageContainer>
             </BrowserRouter>
         </>
     );

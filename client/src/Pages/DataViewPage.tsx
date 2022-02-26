@@ -1,9 +1,10 @@
 import {FC} from "react";
+import {StyledHeader} from "../styled/general";
 
 const DataViewPage:FC = () => {
     return (
         <>
-            <div>Data View Page</div>
+            <StyledHeader>Data View Page</StyledHeader>
         </>
     );
 };

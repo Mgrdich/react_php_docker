@@ -1,9 +1,10 @@
 import {FC} from "react";
+import {StyledHeader} from "../styled/general";
 
 const MainPage:FC = () => {
     return (
         <>
-            <div>Main Page</div>
+            <StyledHeader>Main Page</StyledHeader>
         </>
     );
 };
