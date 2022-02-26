@@ -9,12 +9,12 @@ export default function useTable(url: string) {
 
     useEffect(function () {
         setLoading(true);
-        $http.get(url).then(function (data) {
-                console.log(data);
+        $http.get(url).then(function (res) {
+                let data = res.data.data;
                 setLoading(false);
-                if (data.data.length) {
-                    setThead(Object.keys(data.data[0]));
-                    setTbody(data.data);
+                if (data.length) {
+                    setThead(Object.keys(data[0]));
+                    setTbody(data);
                 }
             }).catch(function (err) {
             setError(err);

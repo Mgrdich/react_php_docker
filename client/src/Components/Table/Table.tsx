@@ -3,6 +3,10 @@ import Thead from "./Thead";
 import {FC} from "react";
 import styled from "styled-components";
 
+const StyledDiv = styled.div`
+  overflow: auto;
+`
+
 const StyledTable = styled.table`
   border-collapse: collapse;
   margin: 25px 0;
@@ -20,10 +24,13 @@ interface ITable {
 
 const Table: FC<ITable> = ({tbody, thead}) => {
     return (
-        <StyledTable>
-            <Thead data={thead}/>
-            <Tbody data={tbody}/>
-        </StyledTable>
+
+        <StyledDiv>
+            <StyledTable>
+                <Thead data={thead}/>
+                <Tbody data={tbody}/>
+            </StyledTable>
+        </StyledDiv>
     );
 };
 
