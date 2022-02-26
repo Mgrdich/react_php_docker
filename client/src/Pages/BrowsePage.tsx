@@ -2,6 +2,7 @@ import {FC, MouseEventHandler} from "react";
 import {FlexContainer, StyledHeader} from "../styled/general";
 import styled from "styled-components";
 import useFile from "../Hooks/useFile";
+import FileService from "../Services/FileService";
 
 const StyledInput = styled.input`
   border: 1px solid black;
@@ -29,10 +30,17 @@ const StyledButton = styled.button<IStyledButton>`
 `;
 
 const BrowsePage: FC = () => {
-    const [handleFileChange, fileName, file, error, reset] = useFile('Csv File', 'csv', 'Invalid File');
+    const [handleFileChange, fileName, file, error, reset, inputRef] = useFile('Csv File', 'Invalid File');
 
-    const onClickHandler: MouseEventHandler<HTMLButtonElement> = function (evt) {
-        console.log("Submitted");
+    const onClickHandler: MouseEventHandler<HTMLButtonElement> = async function (evt) {
+        const res = await FileService.upload(file, {
+            fileName: fileName,
+            url: '/upload',
+        });
+
+        if (res) {
+
+        }
     }
 
     const onResetClick: MouseEventHandler<HTMLButtonElement> = function (evt) {
@@ -46,6 +54,7 @@ const BrowsePage: FC = () => {
                 <StyledInput type="file"
                              accept="csv"
                              onChange={handleFileChange}
+                             ref={inputRef as any}
                 />
                 <StyledButton onClick={onClickHandler} margin="0 0 0 10px"> Submit </StyledButton>
                 <StyledButton onClick={onResetClick} margin="0 0 0 10px"> Reset </StyledButton>
