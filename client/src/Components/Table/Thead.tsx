@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const Thead = () => {
+const Thead:FC = () => {
     return (
         <thead>
             <th>ss</th>

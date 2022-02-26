@@ -1,4 +1,6 @@
-const DataViewPage = () => {
+import {FC} from "react";
+
+const DataViewPage:FC = () => {
     return (
         <>
             <div>Data View Page</div>

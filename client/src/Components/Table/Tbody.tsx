@@ -1,4 +1,6 @@
-const Tbody = () => {
+import {FC} from "react";
+
+const Tbody:FC = () => {
     return (
         <tbody>
             <tr>
