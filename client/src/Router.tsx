@@ -6,14 +6,16 @@ import {
 import BrowsePage from "./Pages/BrowsePage";
 import DataViewPage from "./Pages/DataViewPage";
 import DataViewParsedPage from "./Pages/DataViewParsedPage";
+import MainPage from "./Pages/MainPage";
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<BrowsePage/>}/>
-                <Route path="/page1" element={<DataViewPage/>}/>
-                <Route path="/page2" element={<DataViewParsedPage/> }/>
+                <Route path="/" element={<MainPage/>}/>
+                <Route path="/browse-page" element={<BrowsePage/>}/>
+                <Route path="/data-page1" element={<DataViewPage/>}/>
+                <Route path="/data-page2" element={<DataViewParsedPage/> }/>
             </Routes>
         </BrowserRouter>
     );
