@@ -3,6 +3,8 @@ import {FlexContainer, StyledHeader} from "../styled/general";
 import styled from "styled-components";
 import useFile from "../Hooks/useFile";
 import FileService from "../Services/FileService";
+import useLoading from "../Hooks/useLoading";
+import Loader from "../Components/UI/Loader";
 
 const StyledInput = styled.input`
   border: 1px solid black;
@@ -29,21 +31,36 @@ const StyledButton = styled.button<IStyledButton>`
   }
 `;
 
+const StyledResult = styled.div`
+  text-align: center;
+  margin: 0 auto;
+    * {
+     font-size: 50px;
+      color: var(--text-color);
+    }
+`;
+
+
 const BrowsePage: FC = () => {
     const [handleFileChange, fileName, file, error, reset, inputRef] = useFile('Csv File', 'Invalid File');
+    const {isLoading, isError, setError, setLoading, unsetError} = useLoading();
 
     const onClickHandler: MouseEventHandler<HTMLButtonElement> = async function (evt) {
-        const res = await FileService.upload(file, {
+
+        setLoading(true);
+        FileService.upload(file, {
             fileName: fileName,
             url: '/upload',
+        }).then(function () {
+            setLoading(false);
+        }).catch(function (err) {
+            setError(err.toString());
         });
-
-        if (res) {
-
-        }
     }
 
     const onResetClick: MouseEventHandler<HTMLButtonElement> = function (evt) {
+        setLoading(false);
+        unsetError();
         reset();
     }
 
@@ -65,6 +82,10 @@ const BrowsePage: FC = () => {
             {error.length ? <FlexContainer margin="10px">
                 <div>Error: {error}</div>
             </FlexContainer> : null}
+            <StyledResult>
+                {<Loader/>}
+                {isError && <span>Something went Wrong</span>}
+            </StyledResult>
         </>
     );
 };
