@@ -1,13 +1,14 @@
-import {useCallback, useState} from "react";
+import {ChangeEventHandler, useCallback, useState} from "react";
 
-export default function useFile(defaultFileName = 'Choose a File', filetype: string, errorMessage: string): [
-    Function, string, File, string, Function
+export default function useFile(defaultFileName: string = 'Choose a File', filetype: string = 'txt', errorMessage: string): [
+    ChangeEventHandler, string, File | null, string, Function
 ] {
     const [fileName, setFileName] = useState(defaultFileName);
-    const [file, setFile] = useState<any>({}); // Check my type
+    const [file, setFile] = useState<File | null>(null); // Check my type
     const [error, setError] = useState<string>('');
 
     const handleBookFileChange = useCallback(async (e) => {
+        console.log(e);
         if (filetype.includes(e.target.files[0]?.type)) {
             setError('');
             if (e.target.files[0].name.length > 12) {
@@ -24,8 +25,8 @@ export default function useFile(defaultFileName = 'Choose a File', filetype: str
     }, [errorMessage, filetype]);
 
     const reset = (defaultFileName: string) => {
-        setFileName(defaultFileName)
-        setFile(() => {})
+        setFileName(defaultFileName);
+        setFile(null);
     };
 
     return [handleBookFileChange, fileName, file, error, reset];
