@@ -5,6 +5,7 @@ import useFile from "../Hooks/useFile";
 import FileService from "../Services/FileService";
 import useLoading from "../Hooks/useLoading";
 import Loader from "../Components/UI/Loader";
+import LoaderError from "../Components/UI/LoaderError";
 
 const StyledInput = styled.input`
   border: 1px solid black;
@@ -31,14 +32,7 @@ const StyledButton = styled.button<IStyledButton>`
   }
 `;
 
-const StyledResult = styled.div`
-  text-align: center;
-  margin: 50px auto;
-    * {
-     font-size: 50px;
-      color: var(--text-secondary-color);
-    }
-`;
+
 
 
 const BrowsePage: FC = () => {
@@ -82,10 +76,8 @@ const BrowsePage: FC = () => {
             {error.length ? <FlexContainer margin="10px">
                 <div>Error: {error}</div>
             </FlexContainer> : null}
-            <StyledResult>
-                {isLoading && <Loader/>}
-                {isError && <span>Something went Wrong</span>}
-            </StyledResult>
+            <LoaderError isLoading={isLoading} isError={isError}/>
+
         </>
     );
 };
