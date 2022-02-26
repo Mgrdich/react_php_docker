@@ -1,4 +1,15 @@
 import React, {FC} from 'react';
+import styled from "styled-components";
+
+const StyledTr = styled.tr`
+  background-color: black;
+  color: #ffffff;
+  text-align: left;
+`;
+
+const StyledTh = styled.th`
+  padding: 12px 15px;
+`;
 
 interface IThead {
     data: string[];
@@ -8,11 +19,11 @@ interface IThead {
 const Thead: FC<IThead> = ({data}) => {
     return (
         <thead>
-        <tr>
+        <StyledTr>
             {
-                data.map(item => <th key={item}>{item}</th>)
+                data.map(item => <StyledTh key={item}>{item}</StyledTh>)
             }
-        </tr>
+        </StyledTr>
         </thead>
     );
 };
