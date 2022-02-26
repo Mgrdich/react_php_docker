@@ -10,37 +10,37 @@ import MainPage from "./Pages/MainPage";
 import NavigationBar from "./Components/UI/NavigationBar";
 import {T_NavigationPages} from "./types/types";
 
-enum App_Routes  {
-    mainPage='/',
-    browsePage='/browse-page',
-    dataPage1='/data-page1',
-    dataPage2='/data-page2'
+enum App_Routes {
+    mainPage = '/',
+    browsePage = '/browse-page',
+    dataPage1 = '/data-page1',
+    dataPage2 = '/data-page2'
 }
 
-const NavigationPages:T_NavigationPages = [
+const NavigationPages: T_NavigationPages = [
     {
         text: 'Main Page',
-        url : App_Routes.mainPage
+        url: App_Routes.mainPage
     },
     {
         text: 'Browse Page',
-        url : App_Routes.browsePage
+        url: App_Routes.browsePage
     },
     {
         text: 'Data Page1',
-        url : App_Routes.dataPage1
+        url: App_Routes.dataPage1
     },
     {
         text: 'Data Page 2',
-        url : App_Routes.dataPage2
+        url: App_Routes.dataPage2
     },
 ]
 
 const AppRouter = () => {
     return (
         <>
-            <NavigationBar routes={NavigationPages}/>
             <BrowserRouter>
+                <NavigationBar routes={NavigationPages}/>
                 <Routes>
                     <Route path={App_Routes.mainPage} element={<MainPage/>}/>
                     <Route path={App_Routes.browsePage} element={<BrowsePage/>}/>

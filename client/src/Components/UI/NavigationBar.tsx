@@ -5,9 +5,9 @@ import {Link} from "react-router-dom";
 const StyledUl = styled.ul`
   padding: 0;
   background: black;
-  font-family: Arial, sans serif;
   font-size: 12px;
   text-transform: uppercase;
+  margin: 0;
 `
 
 const StyledLi = styled.li`
@@ -17,7 +17,11 @@ const StyledLi = styled.li`
     display: block;
     padding: 10px;
     color: white;
+    font-size: 16px;
     text-decoration: none;
+    &:hover {
+      color: aqua;
+    }
   }
 `
 
@@ -34,7 +38,7 @@ const NavigationBar: FC<INavigationBar> = ({routes}) => {
             <StyledUl>
                 {
                     routes.map(item => (
-                        <StyledLi>
+                        <StyledLi key={item.url}>
                             <Link to={item.url}>{item.text}</Link>
                         </StyledLi>
                     ))
