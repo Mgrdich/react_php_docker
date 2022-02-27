@@ -4,7 +4,6 @@ import styled from "styled-components";
 import useFile from "../Hooks/useFile";
 import FileService from "../Services/FileService";
 import useLoading from "../Hooks/useLoading";
-import Loader from "../Components/UI/Loader";
 import LoaderError from "../Components/UI/LoaderError";
 
 const StyledInput = styled.input`
