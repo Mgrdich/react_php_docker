@@ -21,6 +21,7 @@ const StyledTable = styled.table`
 
 const StyledPaginationCon = styled.div`
   display: flex;
+  justify-content: flex-end;
 `
 
 interface ITable {

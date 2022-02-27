@@ -70,3 +70,13 @@ export const StyledButton = styled.button<IStyledButton>`
     color: var(--hover-text-color);
   }
 `;
+
+export const StyledResult = styled.div`
+  text-align: center;
+  margin: 50px auto;
+
+  * {
+    font-size: 50px;
+    color: var(--text-secondary-color);
+  }
+`;

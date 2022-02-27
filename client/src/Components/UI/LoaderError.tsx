@@ -1,16 +1,6 @@
-import styled from "styled-components";
 import Loader from "./Loader";
 import {FC} from "react";
-
-const StyledResult = styled.div`
-  text-align: center;
-  margin: 50px auto;
-
-  * {
-    font-size: 50px;
-    color: var(--text-secondary-color);
-  }
-`;
+import {StyledResult} from "../../styled/general";
 
 interface ILoaderError {
     isLoading: boolean;
