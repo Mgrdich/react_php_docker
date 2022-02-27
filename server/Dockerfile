@@ -18,4 +18,3 @@ RUN apt update \
             pdo_mysql
 
 WORKDIR /var/www/html
-CMD ["composer", "install"]
