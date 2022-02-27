@@ -1,6 +1,6 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 
-export default function useLoading(defErrorMessage: string='something went wrong'): {
+export default function useLoading(defErrorMessage: string = 'something went wrong'): {
     isLoading: boolean,
     setLoading: Function,
     isError: boolean,
@@ -12,20 +12,20 @@ export default function useLoading(defErrorMessage: string='something went wrong
     const [isError, setterError] = useState<boolean>(false);
     const [errorMessage, setterErrorMessage] = useState<string>(defErrorMessage);
 
-    const setError = function (msg: string) {
+    const setError = useCallback(function (msg: string) {
         setterError(true);
         setterErrorMessage(msg);
         setterLoading(false);
-    };
+    }, []);
 
-    const unsetError  = function () {
+    const unsetError = useCallback(function () {
         setterError(false);
-    };
+    }, []);
 
-    const setLoading = function (value: boolean) {
+    const setLoading = useCallback(function (value: boolean) {
         setterError(false);
         setterLoading(value);
-    };
+    }, []);
 
     return {
         isLoading,
