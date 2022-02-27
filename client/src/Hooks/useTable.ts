@@ -32,8 +32,12 @@ export default function useTable(fetchUrl: string): useTableReturn {
     });
 
     useEffect(function () {
+        let didCancel: boolean = false;
         setLoading(true);
         $http.get(url).then(function (res) {
+            if (didCancel) {
+                return;
+            }
             let data = res.data.data;
             let links: PaginationLinks = res.data.links;
             setLoading(false);
@@ -47,6 +51,10 @@ export default function useTable(fetchUrl: string): useTableReturn {
         }).catch(function (err) {
             setError(err);
         });
+
+        return () => {
+            didCancel = true;
+        }
     }, [setLoading, setError, url]);
 
 
