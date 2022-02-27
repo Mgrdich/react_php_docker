@@ -20,7 +20,6 @@ services:
     ports:
       - '5672:5672'
   php-apache:
-    container_name: php-apache
     build:
       context: ./server
     ports:
