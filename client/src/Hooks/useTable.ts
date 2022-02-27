@@ -16,7 +16,7 @@ type useTableReturn = {
     isError: boolean;
     tbody: any[];
     thead: string[];
-    setPagination: Function;
+    setPagination: (s: paginationLinkTypes) => void;
 };
 
 export default function useTable(fetchUrl: string): useTableReturn {
