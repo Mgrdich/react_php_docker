@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import $http from "../http";
 import useLoading from "./useLoading";
 
@@ -32,12 +32,8 @@ export default function useTable(fetchUrl: string): useTableReturn {
     });
 
     useEffect(function () {
-        let didCancel: boolean = false;
         setLoading(true);
         $http.get(url).then(function (res) {
-            if (didCancel) {
-                return;
-            }
             let data = res.data.data;
             let links: PaginationLinks = res.data.links;
             setLoading(false);
@@ -51,15 +47,10 @@ export default function useTable(fetchUrl: string): useTableReturn {
         }).catch(function (err) {
             setError(err);
         });
-
-        return () => {
-            didCancel = true;
-        }
     }, [setLoading, setError, url]);
 
 
     const setPagination = useCallback(function (paginationKey: paginationLinkTypes) {
-        console.log('sss');
         if (paginationLinks[paginationKey]) {
             setUrl(paginationLinks[paginationKey] as string);
         }
