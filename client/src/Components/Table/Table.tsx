@@ -40,10 +40,10 @@ const Table: FC<ITable> = ({tbody, thead, setPagination}) => {
             {
                 setPagination ? (
                     <StyledPaginationCon>
-                        <StyledButton onClick={() => setPagination('next')} margin="0 0 0 10px"> Next </StyledButton>
-                        <StyledButton onClick={() => setPagination('first')} margin="0 0 0 10px"> first </StyledButton>
-                        <StyledButton onClick={() => setPagination('last')} margin="0 0 0 10px"> last </StyledButton>
-                        <StyledButton onClick={() => setPagination('prev')} margin="0 0 0 10px"> Prev </StyledButton>
+                        <StyledButton onClick={() => setPagination('next')} minWidth="80px" margin="0 0 0 10px"> Next </StyledButton>
+                        <StyledButton onClick={() => setPagination('first')} minWidth="80px" margin="0 0 0 10px"> first </StyledButton>
+                        <StyledButton onClick={() => setPagination('last')} minWidth="80px" margin="0 0 0 10px"> last </StyledButton>
+                        <StyledButton onClick={() => setPagination('prev')} minWidth="80px" margin="0 0 0 10px"> Prev </StyledButton>
                     </StyledPaginationCon>
                 ) : null
             }
