@@ -49,3 +49,24 @@ export const FlexItem: FC<IFlexItem> = styled.div<IFlexItem>`
   padding: ${({padding}) => padding};
   width: ${({width}) => width};
 `;
+
+interface IStyledButton {
+    margin?: string;
+    minWidth?: string;
+}
+
+
+export const StyledButton = styled.button<IStyledButton>`
+  background-color: black;
+  color: var(--text-color);
+  border-radius: 3px;
+  min-width: ${({minWidth}) => minWidth ? minWidth : '120px'};
+  height: 27px;
+  border: none;
+  cursor: pointer;
+  margin: ${({margin}) => margin};
+
+  &:hover {
+    color: var(--hover-text-color);
+  }
+`;

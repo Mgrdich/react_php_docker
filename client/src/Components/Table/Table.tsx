@@ -2,6 +2,8 @@ import Tbody from "./Tbody";
 import Thead from "./Thead";
 import {FC} from "react";
 import styled from "styled-components";
+import {StyledButton} from "../../styled/general";
+import {paginationLinkTypes} from "../../Hooks/useTable";
 
 const StyledDiv = styled.div`
   overflow: auto;
@@ -17,12 +19,17 @@ const StyledTable = styled.table`
   width: 100%;
 `;
 
+const StyledPaginationCon = styled.div`
+  display: flex;
+`
+
 interface ITable {
     thead: string[];
     tbody: Array<any>;
+    setPagination?: (s: paginationLinkTypes) => void;
 }
 
-const Table: FC<ITable> = ({tbody, thead}) => {
+const Table: FC<ITable> = ({tbody, thead, setPagination}) => {
     return (
 
         <StyledDiv>
@@ -30,6 +37,16 @@ const Table: FC<ITable> = ({tbody, thead}) => {
                 <Thead data={thead}/>
                 <Tbody data={tbody}/>
             </StyledTable>
+            {
+                setPagination ? (
+                    <StyledPaginationCon>
+                        <StyledButton onClick={() => setPagination('next')} margin="0 0 0 10px"> Next </StyledButton>
+                        <StyledButton onClick={() => setPagination('first')} margin="0 0 0 10px"> first </StyledButton>
+                        <StyledButton onClick={() => setPagination('last')} margin="0 0 0 10px"> last </StyledButton>
+                        <StyledButton onClick={() => setPagination('prev')} margin="0 0 0 10px"> Prev </StyledButton>
+                    </StyledPaginationCon>
+                ) : null
+            }
         </StyledDiv>
     );
 };

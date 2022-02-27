@@ -5,13 +5,13 @@ import useTable from "../Hooks/useTable";
 import LoaderError from "../Components/UI/LoaderError";
 
 const DataViewParsedPage: FC = () => {
-    const {isLoading, isError, tbody, thead} = useTable('/files');
+    const {isLoading, isError, tbody, thead, setPagination} = useTable('/files');
 
     return (
         <>
             <StyledHeader>Data View Parsed Page</StyledHeader>
             <LoaderError isLoading={isLoading} isError={isError}/>
-            {tbody.length?<Table thead={thead} tbody={tbody}/>:null}
+            {tbody.length?<Table thead={thead} tbody={tbody} setPagination={setPagination}/>:null}
         </>
     );
 };
