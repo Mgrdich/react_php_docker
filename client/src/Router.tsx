@@ -15,7 +15,7 @@ const PageContainer = styled.div`
   padding: 10px;
 `;
 
-enum App_Routes {
+export enum App_Routes {
     mainPage = '/',
     dataPage1 = '/data-page1',
     dataPage2 = '/data-page2'

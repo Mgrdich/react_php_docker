@@ -21,7 +21,7 @@ export default class FileService {
         if (obj.onUploadProgress) {
             config.onUploadProgress = obj.onUploadProgress;
         }
-
-        return $http.post(obj.fileName, formData, config);
+        console.log(obj.url);
+        return $http.post(obj.url, formData, config);
     }
 }

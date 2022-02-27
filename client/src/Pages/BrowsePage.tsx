@@ -5,6 +5,10 @@ import useFile from "../Hooks/useFile";
 import FileService from "../Services/FileService";
 import useLoading from "../Hooks/useLoading";
 import LoaderError from "../Components/UI/LoaderError";
+import {AxiosResponse} from "axios"
+import { useNavigate } from "react-router-dom";
+import {NavigateFunction} from "react-router";
+import {App_Routes} from "../Router";
 
 const StyledInput = styled.input`
   border: 1px solid black;
@@ -18,15 +22,20 @@ const StyledInput = styled.input`
 const BrowsePage: FC = () => {
     const [handleFileChange, fileName, file, error, reset, inputRef] = useFile('Csv File', 'Invalid File');
     const {isLoading, isError, setError, setLoading, unsetError} = useLoading();
+    let navigate:NavigateFunction = useNavigate();
 
     const onClickHandler: MouseEventHandler<HTMLButtonElement> = async function (evt) {
 
         setLoading(true);
         FileService.upload(file, {
-            fileName: fileName,
+            fileName: 'file',
             url: '/upload',
-        }).then(function () {
-            setLoading(false);
+        }).then(function (res:AxiosResponse) {
+            setLoading(false)
+            let data = res.data;
+            if(data.success) {
+                navigate(App_Routes.dataPage2)
+            }
         }).catch(function (err) {
             setError(err.toString());
         });

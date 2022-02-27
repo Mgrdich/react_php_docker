@@ -65,7 +65,12 @@ export const StyledButton = styled.button<IStyledButton>`
   border: none;
   cursor: pointer;
   margin: ${({margin}) => margin};
-
+  &:disabled {
+    cursor: not-allowed;
+    background-color: rgba('black',.6);
+    pointer-events: none;
+    color: var(--text-color);
+  }
   &:hover {
     color: var(--hover-text-color);
   }

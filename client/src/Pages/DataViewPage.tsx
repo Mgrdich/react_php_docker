@@ -6,13 +6,13 @@ import useTable from "../Hooks/useTable";
 import NoDataFound from "../Components/UI/NoDataFound";
 
 const DataViewPage: FC = () => {
-    const {isLoading, isError, tbody, thead, setPagination} = useTable('/files');
+    const {isLoading, isError, tbody, thead, setPagination , paginationLinks} = useTable('/files');
 
     return (
         <>
             <StyledHeader>Data View Page</StyledHeader>
             <LoaderError isLoading={isLoading} isError={isError}/>
-            {tbody.length ? <Table thead={thead} tbody={tbody} setPagination={setPagination}/> : <NoDataFound/>}
+            {tbody.length ? <Table thead={thead} tbody={tbody} setPagination={setPagination} paginationLinks={paginationLinks}/> : <NoDataFound/>}
         </>
     );
 };

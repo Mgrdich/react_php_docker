@@ -28,9 +28,11 @@ interface ITable {
     thead: string[];
     tbody: Array<any>;
     setPagination?: (s: paginationLinkTypes) => void;
+    paginationLinks?: any; //TODO fix later not time
 }
 
-const Table: FC<ITable> = ({tbody, thead, setPagination}) => {
+const Table: FC<ITable> = ({tbody, thead, setPagination, paginationLinks={}}) => {
+    console.log(!paginationLinks['next']);
     return (
 
         <StyledDiv>
@@ -41,10 +43,14 @@ const Table: FC<ITable> = ({tbody, thead, setPagination}) => {
             {
                 setPagination ? (
                     <StyledPaginationCon>
-                        <StyledButton onClick={() => setPagination('next')} minWidth="80px" margin="0 0 0 10px"> Next </StyledButton>
-                        <StyledButton onClick={() => setPagination('first')} minWidth="80px" margin="0 0 0 10px"> first </StyledButton>
-                        <StyledButton onClick={() => setPagination('last')} minWidth="80px" margin="0 0 0 10px"> last </StyledButton>
-                        <StyledButton onClick={() => setPagination('prev')} minWidth="80px" margin="0 0 0 10px"> Prev </StyledButton>
+                        <StyledButton disabled={!paginationLinks['prev']} onClick={() => setPagination('prev')}
+                                      minWidth="80px" margin="0 0 0 10px"> Prev </StyledButton>
+                        <StyledButton disabled={!paginationLinks['first']} onClick={() => setPagination('first')}
+                                      minWidth="80px" margin="0 0 0 10px"> first </StyledButton>
+                        <StyledButton disabled={!paginationLinks['last']} onClick={() => setPagination('last')}
+                                      minWidth="80px" margin="0 0 0 10px"> last </StyledButton>
+                        <StyledButton disabled={!paginationLinks['next']} onClick={() => setPagination('next')}
+                                      minWidth="80px" margin="0 0 0 10px"> Next </StyledButton>
                     </StyledPaginationCon>
                 ) : null
             }
